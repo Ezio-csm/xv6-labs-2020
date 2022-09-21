@@ -9,15 +9,15 @@ int main(int argc, char *argv[]) {
 	pipe(p1);
     if(fork() == 0){
 		char ch[2];
-        read(p0[1], ch, sizeof(ch));
+        read(p0[0], ch, sizeof(ch));
         printf("%d: received ping\n", getpid());
-        write(p1[0], ch, sizeof(ch));
+        write(p1[1], ch, sizeof(ch));
     }
 	else{
 		char ch[2];
-        write(p0[0], "6", 1);
+        write(p0[1], "6", 2);
         wait(0);
-        read(p1[1], ch, sizeof(ch));
+        read(p1[0], ch, sizeof(ch));
         printf("%d: received pong\n", getpid());
     }
     exit(0);
