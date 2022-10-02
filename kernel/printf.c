@@ -139,6 +139,6 @@ void backtrace(void)
   uint64 fp = r_fp();
   while(PGROUNDDOWN(fp) == kstack){
     printf("%p\n", *((uint64 *)(fp - 8)));
-    fp = *((uint64 *)(fp - 16))
+    fp = *((uint64 *)(fp - 16));
   }
 }
