@@ -83,7 +83,7 @@ usertrap(void)
     if(*it > 0 && ++(*pt) >= *it){
       *pt = 0;
       if(p -> al_frame.kernel_satp == 0) {
-        memmove(&p -> al_frame, p -> trapframe, sizeof(struct trapframe));
+        memmove(&(p -> al_frame), p -> trapframe, sizeof(struct trapframe));
         p -> trapframe -> epc = p -> phandler;
       }
     }
